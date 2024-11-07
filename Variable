@@ -1,0 +1,13 @@
+#!/bin/bash
+#Example of defining variables
+
+a=Ashmit
+b=boruto
+c=chutiya
+d=Devansh
+
+echo "I am $a"
+echo "I am $b"
+echo "I am $c"
+echo "I am $d"
+
