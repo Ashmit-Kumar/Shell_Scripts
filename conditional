@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# if-then script
+
+echo "Enter a number between 0-1000"
+read count
+if [ $count -eq 100 ];
+then
+   echo "count is $count"
+else
+   echo "Count is not 100"
+fi
+
