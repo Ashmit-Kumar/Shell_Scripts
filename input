@@ -5,7 +5,7 @@
 # Name
 
 # if you want to take command as input and run in other command then you 
-# need to have tick around your command that you are assigning to the 
+# need to have backtick around your command that you are assigning to the 
 # variable. 
 a=`hostname`
 b= `pwd`
