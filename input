@@ -1,0 +1,12 @@
+#!/bin/bash
+# taking input from user
+
+# Name
+echo "hello, my name is Ashmit kumar"
+echo
+echo "What is your name?"
+read name
+echo
+echo "Hello $name"
+
+
