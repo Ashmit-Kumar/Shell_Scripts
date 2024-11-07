@@ -1,8 +1,15 @@
 #!/bin/bash
 # taking input from user
 
+
 # Name
-echo "hello, my name is Ashmit kumar"
+
+# if you want to take command as input and run in other command then you 
+# need to have tick around your command that you are assigning to the 
+# variable. 
+a=`hostname`
+b= `pwd`
+echo "hello, my server name is $a"
 echo
 echo "What is your name?"
 read name
