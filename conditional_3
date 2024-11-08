@@ -1,0 +1,22 @@
+#!/bin/bash
+
+clear
+echo
+echo "What is your name"
+echo
+read a
+echo
+echo Hello $a,
+echo
+echo "Do you like this company enviroment (yes/no)?"
+read Like
+echo
+if [  $Like == yes ]
+then 
+echo "you are promoted"
+elif [ $Like == no ]
+then
+echo "how dare you you are demoted"
+else
+echo "choose correctly andhe"
+fi

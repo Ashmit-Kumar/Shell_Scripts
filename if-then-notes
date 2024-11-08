@@ -1,0 +1,260 @@
+Shell Scripting Notes: if-then Statement
+Introduction to Conditional Statements
+
+In shell scripting, conditional statements allow you to control the flow of execution based on certain conditions. The if-then statement is one of the most commonly used conditional constructs in shell scripting.
+1. Basic Structure of if-then
+
+The if-then construct is used to check a condition and execute a block of code if that condition is true. The basic syntax is:
+
+#!/bin/bash
+
+if [ condition ]; then
+    # Commands to execute if condition is true
+fi
+
+    if: Starts the conditional check.
+    [ ]: Encloses the condition (the test).
+    then: Executes the commands if the condition is true.
+    fi: Ends the if block (reverse of if).
+
+2. if-then-else Structure
+
+You can add an else block to specify commands that will execute if the condition is false:
+
+#!/bin/bash
+
+if [ condition ]; then
+    # Commands to execute if condition is true
+else
+    # Commands to execute if condition is false
+fi
+
+    else: Executes commands if the if condition is false.
+
+3. if-then-elif-else Structure
+
+To check multiple conditions, you can use elif (short for "else if"):
+
+#!/bin/bash
+
+if [ condition1 ]; then
+    # Commands for condition1
+elif [ condition2 ]; then
+    # Commands for condition2
+else
+    # Commands if none of the conditions are true
+fi
+
+    elif: Adds additional conditions to check if the previous condition(s) failed.
+
+4. Commonly Used Operators in Conditional Statements
+a. Numeric Comparison Operators
+
+For comparing integers, use the following operators within the test brackets ([ ]):
+Operator	Description	Example
+-eq	Equal to	[ $a -eq $b ]
+-ne	Not equal to	[ $a -ne $b ]
+-gt	Greater than	[ $a -gt $b ]
+-lt	Less than	[ $a -lt $b ]
+-ge	Greater than or equal to	[ $a -ge $b ]
+-le	Less than or equal to	[ $a -le $b ]
+b. String Comparison Operators
+
+For comparing strings, use the following operators:
+Operator	Description	Example
+=	Equal to	[ "$a" = "$b" ]
+!=	Not equal to	[ "$a" != "$b" ]
+-z	String is empty	[ -z "$a" ]
+-n	String is not empty	[ -n "$a" ]
+
+Important: Always put quotes around variables when comparing strings to avoid errors if the variable is empty or contains spaces.
+c. File Test Operators
+
+You can also test for file properties:
+Operator	Description	Example
+-f	File exists and is a regular file	[ -f "$filename" ]
+-d	Directory exists	[ -d "$dir" ]
+-e	File or directory exists	[ -e "$file" ]
+-r	File is readable	[ -r "$file" ]
+-w	File is writable	[ -w "$file" ]
+-x	File is executable	[ -x "$file" ]
+5. Examples of if-then Usage
+a. Basic Numeric Comparison
+
+#!/bin/bash
+
+echo "Enter a number:"
+read number
+
+if [ $number -eq 100 ]; then
+    echo "The number is 100!"
+fi
+
+b. Using if-then-else
+
+#!/bin/bash
+
+echo "Enter a number:"
+read number
+
+if [ $number -gt 100 ]; then
+    echo "The number is greater than 100!"
+else
+    echo "The number is less than or equal to 100!"
+fi
+
+c. Multiple Conditions with elif
+
+#!/bin/bash
+
+echo "Enter your age:"
+read age
+
+if [ $age -lt 18 ]; then
+    echo "You are a minor."
+elif [ $age -ge 18 ] && [ $age -lt 65 ]; then
+    echo "You are an adult."
+else
+    echo "You are a senior citizen."
+fi
+
+d. Checking If a File Exists
+
+#!/bin/bash
+
+echo "Enter a filename:"
+read filename
+
+if [ -f "$filename" ]; then
+    echo "File exists."
+else
+    echo "File does not exist."
+fi
+
+e. Checking If a Directory Exists
+
+#!/bin/bash
+
+echo "Enter a directory name:"
+read directory
+
+if [ -d "$directory" ]; then
+    echo "The directory exists."
+else
+    echo "The directory does not exist."
+fi
+
+6. Negating Conditions
+
+To negate a condition, use the ! operator:
+
+#!/bin/bash
+
+echo "Enter a filename:"
+read filename
+
+if [ ! -f "$filename" ]; then
+    echo "File does not exist!"
+else
+    echo "File exists."
+fi
+
+7. Best Practices
+
+    Quotes around variables: Always quote variables when using them in conditional checks to prevent errors with empty strings or strings with spaces.
+
+    Example:
+
+if [ -z "$variable" ]; then
+    echo "Variable is empty"
+fi
+
+Spaces are important: Ensure there are spaces around [ ], the comparison operator, and the variables.
+
+Correct:
+
+if [ $a -eq 100 ]; then
+
+Incorrect:
+
+    if [$a -eq 100]; then
+
+8. Conclusion
+
+The if-then construct is a fundamental tool in shell scripting, allowing for conditional execution based on the evaluation of an expression. By combining if, else, elif, and various comparison operators, you can create scripts that respond dynamically to input or system states.
+Additional Resources
+
+    man test — The manual for the test command, which is often used in if conditions.
+    man bash — Detailed manual for Bash, including conditions, operators, and other built-in commands.
+
+These notes should help you understand the basics of if-then in shell scripting and how to use it effectively in your scripts!
+
+
+
+
+
+
+
+Commonly Used Comparison Operators
+
+    Numeric Comparisons:
+        -eq: Equal to
+        -ne: Not equal to
+        -gt: Greater than
+        -lt: Less than
+        -ge: Greater than or equal to
+        -le: Less than or equal to
+
+    String Comparisons:
+        =, !=: String equality and inequality
+        -z: Checks if a string is empty
+        -n: Checks if a string is non-empty
+
+    File Tests:
+        -f: Check if a file exists and is a regular file
+        -d: Check if a directory exists
+        -e: Check if a file or directory exists
+        -r: Check if a file is readable
+        -w: Check if a file is writable
+        -x: Check if a file is executable
+
+Negation in Conditions
+
+You can negate a condition by using the ! operator. This means that the condition will be true when the original condition is false, and vice versa.
+Example:
+
+#!/bin/bash
+
+echo "Enter a file name:"
+read filename
+
+if [ ! -f "$filename" ]; then
+    echo "The file does not exist."
+else
+    echo "The file exists."
+fi
+
+In this example, the script checks if the file doesn't exist (! -f), and if true, prints "The file does not exist."
+Combining Multiple Conditions
+
+You can combine conditions using logical operators such as && (AND) and || (OR).
+
+    AND (&&): Both conditions must be true for the block to execute.
+    OR (||): At least one of the conditions must be true for the block to execute.
+
+Example (AND):
+
+#!/bin/bash
+
+echo "Enter your age:"
+read age
+echo "Enter your height in cm:"
+read height
+
+if [ $age -ge 18 ] && [ $height -ge 150 ]; then
+    echo "You are eligible."
+else
+    echo "You are not eligible."
+fi
+
+This checks if both conditions (age >= 18 and height >= 150 cm) are true before printing "You are eligible."
