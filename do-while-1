@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# do-while
+
+echo "Input a number"
+read num
+count=1
+while [ $count -lt $num ]
+do
+    echo "Hello"
+    sleep 1
+    (( num=num-1 ))     # Decrease num by 1
+    (( count++ ))       # Increment count by 1
+done
