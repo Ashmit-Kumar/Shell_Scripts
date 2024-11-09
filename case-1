@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Case Scripts(Switch-Case)
+
+echo
+echo "Please Chose one of the option below"
+echo
+echo `a = Displays Date and Time`
+echo 'b = List file and Directories'
+echo 'c = List user Logged in'
+echo 'd = Check System Update'
+echo
+
+read choice
+case $choice in
+a) date;;
+b) ls -ltr;;
+c) who;;
+d) uptime;;
+*) echo Invalid case
+esac
