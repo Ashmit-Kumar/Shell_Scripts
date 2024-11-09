@@ -1,0 +1,15 @@
+#!/bin/bash
+# Author: Ashmit Kumar
+# Date: 08/11/24
+# Description:This script will ping a remote host and notify
+
+echo "Enter your Ip"
+read ip
+ping -c4 $ip
+if [ $? -eq 0 ]
+then 
+echo "ok"
+else
+echo 
+echo "not ok"
+fi

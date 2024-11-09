@@ -1,0 +1,14 @@
+#!/bin/bash
+# Author: Ashmit Kumar
+# Date: 08/11/24
+# Description: This scrips check the status of ip 
+
+echo "Enter the Ip"
+read ip
+ping -c4 $ip &> /home/ashmit/error
+if [ $? -eq 0 ]
+then 
+echo "Ok"
+else
+echo "Not Ok"
+fi
