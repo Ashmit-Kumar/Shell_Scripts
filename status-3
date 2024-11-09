@@ -1,0 +1,16 @@
+#!/bin/bash
+# Author: Ashmit Kumar
+# Date: 08/11/2024
+# Description: A script that checks status of file
+
+IPLIST="/home/ashmit/scripts/ipfile"
+for ip in $(cat "$IPLIST")
+do
+	ping -c2 $ip > /home/ashmit/error-1
+	if [ $? -eq 0 ]
+	then 
+	echo "$ip Ok"
+	else
+	echo "$ip Not Ok"
+	fi
+done
